@@ -1,0 +1,18 @@
+# Виртуальное окружение Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Переменные окружения (содержат пароли!)
+.env
+
+# PyCharm
+.idea/
+
+# Alembic (генерируется автоматически)
+alembic/versions/*.pyc
+
+# macOS
+.DS_Store
