@@ -25,6 +25,7 @@ services:
       - MINIO_SECURE=false
     volumes:
       - ./src:/app/src
+      - ./tests:/app/tests
     command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
@@ -105,6 +106,7 @@ services:
       - MINIO_SECRET_KEY=minioadmin
     volumes:
       - ./src:/app/src
+      - ./tests:/app/tests
     command: celery -A src.celery_app worker --loglevel=info --concurrency=4
     env_file:
       - .env
@@ -123,6 +125,7 @@ services:
       - CELERY_RESULT_BACKEND=redis://redis:6379/1
     volumes:
       - ./src:/app/src
+      - ./tests:/app/tests
     command: celery -A src.celery_app beat --loglevel=info
 
   # Flower (Celery Monitoring)
